@@ -8,8 +8,14 @@ defmodule TopRoleWeb.MouseLive do
       <button class="btn btn-primary" phx-click="boom" class="alert-danger">BOOM</button>
     </div>
 
-    <div phx-mousemove="testmouse" style="width:500px;height:500px;background-color:#222;">
-      <div style="width:4px; height:4px; position:absolute; background-color:white;top: <%= @y %>px; left: <%= @x %>px"
+    <div phx-mouseenter="testmouse" style="width:500px;height:500px;background-color:#222;">
+      <div style="width:4px; height:4px; position:absolute; background-color:white;top: <%= @y-2 %>px; left: <%= @x-2 %>px"> </div>
+      <div style="width:400px; height:400px; position:absolute; background-color:#252;padding:10px">
+      <div style="width:300px; height:300px; position:absolute; background-color:#522;padding:10px">
+      <div style="width:200px; height:200px; position:absolute; background-color:#225;padding:10px">
+      </div>
+      </div>
+      </div>
     </div>
     """
   end

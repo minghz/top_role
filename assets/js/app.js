@@ -11,14 +11,67 @@ let closestPhxBinding = (el, binding) => {
 export default class MouseLiveSocket extends LiveSocket {
     bindTopLevelEvents(){
         super.bindTopLevelEvents()
-        let events = ["mouseenter", " mouseleave", "mousemove"]
-        for(var eventIndex in events){
-            let eventName = events[eventIndex]
-            window.addEventListener(eventName, e => {
-                if(!this[eventName+"_locked"]){
+        let ignoreNext = false;
+        let eventDefinitions = {}
+        eventDefinitions["mousemove"] = {
+            rateLimit: 20,
+            getTarget: closestPhxBinding
+        }
+        eventDefinitions["mouseenter"] = {
+            jsEventName: "mouseover",
+            getPhxEvent: function(target, binding){
+                let phxEvent = undefined
+                if(!ignoreNext){
+                    let boundTarget = closestPhxBinding(target, binding)
+                    phxEvent = boundTarget && boundTarget.getAttribute(binding)
+                } else {
+                    ignoreNext = false
+                }
+                return phxEvent
+            },
+        }
+        eventDefinitions["mouseleave"] = {
+            jsEventName: "mouseout",
+            getPhxEvent: function(target, binding){
+                let phxEvent = undefined
+                if(target){
+                    let parent = target.parentElement || target.parentNode
+                    let parentPhxEvent = closestPhxBinding(target, binding.replace("mouseleave", "mouseenter"))
+                    if(parentPhxEvent){
+                        ignoreNext = true
+                    }
+                    phxEvent = target.getAttribute(binding)
+                }
+                return phxEvent
+            },
+        }
+        eventDefinitions["mouseover"] = {
+        }
+        eventDefinitions["mouseout"] = eventDefinitions["mouseover"]
+        eventDefinitions["mousedown"] = {
+            getTarget: closestPhxBinding
+        }
+        eventDefinitions["mouseup"] = eventDefinitions["mousedown"]
+        let rateLimitedEventTiming = {"mousemove": 20}
+        let events = ["mouseover", " mouseout", "mousemove", "mousedown", "mouseup"]
+        let useNearestTargetEvents = ["mousemove", "mousedown", "mouseup"]
+        for(let loopEventName in eventDefinitions){
+            let eventName = loopEventName
+            let eventOptions = eventDefinitions[eventName]
+            let jsEventName = eventOptions.jsEventName || eventName
+            window.addEventListener(jsEventName, e => {
+                if(!eventOptions.rateLimit || !this[eventName+"_ratelocked"]){
                   let binding = this.binding(eventName)
-                  let target = closestPhxBinding(e.target, binding)
-                  let phxEvent = target && target.getAttribute(binding)
+                  let target = e.target
+                  if(eventOptions.getTarget){
+                    target = eventOptions.getTarget(e.target, binding)
+                  }
+                  let phxEvent = undefined
+                  if(eventOptions.getPhxEvent){
+                    phxEvent = eventOptions.getPhxEvent(target, binding)
+                  } else {
+                    phxEvent = target && target.getAttribute(binding)
+                  }
                   if(!phxEvent){ return }
                   e.preventDefault()
                   this.owner(target, view => {
@@ -28,10 +81,12 @@ export default class MouseLiveSocket extends LiveSocket {
                       value: {x: e.x, y: e.y}
                     })
                   })
-                  this[eventName+"_locked"] = true;
-                  setTimeout(_ => {
-                    this[eventName+"_locked"] = false;
-                  }, 20);
+                  if (eventOptions.rateLimit){
+                      this[eventName+"_ratelocked"] = true;
+                      setTimeout(_ => {
+                        this[eventName+"_ratelocked"] = false;
+                      }, rateLimitedEventTiming[eventName]);
+                  }
                 }
             }, true)
         }
