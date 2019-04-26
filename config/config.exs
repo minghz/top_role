@@ -32,6 +32,14 @@ config :phoenix,
     leex: Phoenix.LiveView.Engine
   ]
 
+config :phoenix, :json_library, Jason
+
+config :top_role, :pow,
+  user: TopRole.Users.User,
+  repo: TopRole.Repo,
+  web_module: MyAppWeb
+
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

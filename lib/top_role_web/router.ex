@@ -1,5 +1,6 @@
 defmodule TopRoleWeb.Router do
   use TopRoleWeb, :router
+  use Pow.Phoenix.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -18,6 +19,12 @@ defmodule TopRoleWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+  end
+  
+  scope "/" do
+    pipe_through :browser
+
+    pow_routes()
   end
 
   # Other scopes may use custom stacks.

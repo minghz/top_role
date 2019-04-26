@@ -1,5 +1,7 @@
 defmodule TopRole.Repo do
-  use Ecto.Repo, otp_app: :top_role
+  use Ecto.Repo,
+    otp_app: :top_role,
+    adapter: Ecto.Adapters.Postgres
 
   @doc """
   Dynamically loads the repository url from the
