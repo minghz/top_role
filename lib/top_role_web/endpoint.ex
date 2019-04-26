@@ -26,7 +26,7 @@ defmodule TopRoleWeb.Endpoint do
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
     pass: ["*/*"],
-    json_decoder: Poison
+    json_decoder: Jason
 
   plug Plug.MethodOverride
   plug Plug.Head
@@ -38,6 +38,13 @@ defmodule TopRoleWeb.Endpoint do
     store: :cookie,
     key: "_top_role_key",
     signing_salt: "q4zO5C36"
+
+  plug Plug.Session,
+    store: :cookie,
+    key: "_top_role_key",
+    signing_salt: "s3guEw83S"
+
+  plug Pow.Plug.Session, otp_app: :top_role
 
   plug TopRoleWeb.Router
 
