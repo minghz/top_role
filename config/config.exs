@@ -36,7 +36,8 @@ config :phoenix, :json_library, Jason
 
 config :top_role, :pow,
   user: TopRole.Users.User,
-  repo: TopRole.Repo
+  repo: TopRole.Repo,
+  web_module: MyAppWeb
 
 
 # Configures Elixir's Logger
