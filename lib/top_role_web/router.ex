@@ -19,6 +19,7 @@ defmodule TopRoleWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    live "/mouse", MouseLive
   end
   
   scope "/" do
