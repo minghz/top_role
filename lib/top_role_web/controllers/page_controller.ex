@@ -1,4 +1,4 @@
-defmodule TopRoleWeb.PageController do
+defmodule TopRoleWeb.HomeController do
   use TopRoleWeb, :controller
 
   def index(conn, _params) do

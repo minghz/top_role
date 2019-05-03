@@ -1,4 +1,4 @@
-defmodule TopRoleWeb.PageControllerTest do
+defmodule TopRoleWeb.HomeControllerTest do
   use TopRoleWeb.ConnCase
 
   test "GET /", %{conn: conn} do
