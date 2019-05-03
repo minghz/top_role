@@ -15,17 +15,27 @@ defmodule TopRoleWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :protected do
+    plug Pow.Plug.RequireAuthenticated,
+      error_handler: Pow.Phoenix.PlugErrorHandler
+  end
+
   scope "/", TopRoleWeb do
-    pipe_through :browser # Use the default browser stack
+    pipe_through :browser
 
     get "/", HomeController, :index
-    live "/mouse", MouseLive
   end
-  
+
   scope "/" do
     pipe_through :browser
 
     pow_routes()
+  end
+
+  scope "/", TopRoleWeb do
+    pipe_through :protected
+
+    live "/mouse", MouseLive
   end
 
   # Other scopes may use custom stacks.
