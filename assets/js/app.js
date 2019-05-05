@@ -1,4 +1,4 @@
-
+import "phoenix_html"
 import LiveSocket from "phoenix_live_view"
 
 let closestPhxBinding = (el, binding) => {
