@@ -46,7 +46,8 @@ defmodule TopRole.Mixfile do
       {:plug_cowboy, "~> 2.0"},
       {:plug, "~> 1.7"},
       {:jason, "~> 1.0"},
-      {:pow, "~> 1.0.6"}
+      {:pow, "~> 1.0.6"},
+      {:redix, ">= 0.0.0"}
     ]
   end
 

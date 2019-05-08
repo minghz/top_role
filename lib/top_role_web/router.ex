@@ -26,18 +26,19 @@ defmodule TopRoleWeb.Router do
     get "/", HomeController, :index
   end
 
+  scope "/", TopRoleWeb do
+    pipe_through [:browser, :protected]
+
+    get "/game/:room", GameTableController, :show
+    live "/mouse", MouseLive
+    # Add your protected routes here
+  end
+
   scope "/" do
     pipe_through :browser
 
     pow_routes()
   end
-
-  scope "/", TopRoleWeb do
-    pipe_through :protected
-
-    live "/mouse", MouseLive
-  end
-
   # Other scopes may use custom stacks.
   # scope "/api", TopRoleWeb do
   #   pipe_through :api
