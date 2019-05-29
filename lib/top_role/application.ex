@@ -12,8 +12,10 @@ defmodule TopRole.Application do
       supervisor(TopRole.Repo, []),
       # Start the endpoint when the application starts
       supervisor(TopRoleWeb.Endpoint, []),
+      supervisor(TopRoleWeb.GamePresence, []),
       # Start your own worker by calling: TopRole.Worker.start_link(arg1, arg2, arg3)
       # worker(TopRole.Worker, [arg1, arg2, arg3]),
+      {Redix, name: :redix}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

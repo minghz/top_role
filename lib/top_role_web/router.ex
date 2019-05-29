@@ -27,9 +27,17 @@ defmodule TopRoleWeb.Router do
     live "/mouse", MouseLive
   end
 
+  scope "/", TopRoleWeb do
+    pipe_through [:browser, :protected]
+
+    get "/game/:room", GameTableController, :show
+    live "/mouse", MouseLive
+    # Add your protected routes here
+  end
+
   scope "/" do
     pipe_through :browser
-
+    
     get "/", TopRoleWeb.HomeController, :index
     pow_routes()
   end

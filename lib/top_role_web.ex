@@ -38,6 +38,7 @@ defmodule TopRoleWeb do
       use Phoenix.HTML
 
       import TopRoleWeb.Router.Helpers
+      alias TopRoleWeb.Router.Helpers, as: Routes
       import TopRoleWeb.ErrorHelpers
       import TopRoleWeb.Gettext
       import Phoenix.LiveView, only: [live_render: 2, live_render: 3]

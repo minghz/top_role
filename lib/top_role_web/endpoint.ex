@@ -1,9 +1,8 @@
 defmodule TopRoleWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :top_role
 
-  socket "/socket", TopRoleWeb.UserSocket
+  #socket "/socket", Phoenix.Socket, websocket: true, longpoll: false
   socket "/live", Phoenix.LiveView.Socket
-
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phoenix.digest
@@ -38,11 +37,6 @@ defmodule TopRoleWeb.Endpoint do
     store: :cookie,
     key: "_top_role_key",
     signing_salt: "q4zO5C36"
-
-  plug Plug.Session,
-    store: :cookie,
-    key: "_top_role_key",
-    signing_salt: "s3guEw83S"
 
   plug Pow.Plug.Session, otp_app: :top_role
 
