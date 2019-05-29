@@ -5,6 +5,8 @@ defmodule TopRole.Users.User do
   schema "users" do
     pow_user_fields()
 
+    has_many :game_rooms, TopRole.GameRoom
+
     timestamps()
   end
 end
