@@ -21,9 +21,10 @@ defmodule TopRoleWeb.Router do
   end
 
   scope "/", TopRoleWeb do
-    pipe_through :browser
+    pipe_through [:browser, :protected]
 
-    get "/", HomeController, :index
+    get "/dashboard", DashboardController, :index
+    live "/mouse", MouseLive
   end
 
   scope "/", TopRoleWeb do
@@ -36,9 +37,11 @@ defmodule TopRoleWeb.Router do
 
   scope "/" do
     pipe_through :browser
-
+    
+    get "/", TopRoleWeb.HomeController, :index
     pow_routes()
   end
+
   # Other scopes may use custom stacks.
   # scope "/api", TopRoleWeb do
   #   pipe_through :api
