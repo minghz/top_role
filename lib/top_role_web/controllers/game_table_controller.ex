@@ -4,7 +4,7 @@ defmodule TopRoleWeb.GameTableController do
 
   def show(conn, %{"room" => room}) do
     case Pow.Plug.current_user(conn) do
-      %TopRole.Users.User{} = current_user ->
+      %TopRole.User{} = current_user ->
         live_render(conn, TopRoleWeb.GameTable, session: %{
           room: room,
           current_user: current_user,

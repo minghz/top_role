@@ -8,7 +8,7 @@ defmodule TopRoleWeb.GameRoomSchemaTest do
   end
   
   test "user has many game_rooms" do
-    user = TopRole.Repo.insert!(%TopRole.Users.User{email: "dummy@example.com"})
+    user = TopRole.Repo.insert!(%TopRole.User{email: "dummy@example.com"})
 
     TopRole.Repo.insert!(%TopRole.GameRoom{user_id: user.id, description: "game room 1"})
     TopRole.Repo.insert!(%TopRole.GameRoom{user_id: user.id, description: "game room 2"})
@@ -19,7 +19,7 @@ defmodule TopRoleWeb.GameRoomSchemaTest do
   end
 
   test "game_room belongs to a user" do
-    user = TopRole.Repo.insert!(%TopRole.Users.User{email: "dummy@example.com"})
+    user = TopRole.Repo.insert!(%TopRole.User{email: "dummy@example.com"})
     game_room = TopRole.Repo.insert!(%TopRole.GameRoom{user_id: user.id, description: "game room 1"})
 
     associated_user = TopRole.Repo.one! Ecto.assoc(game_room, :user)

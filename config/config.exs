@@ -35,7 +35,7 @@ config :phoenix,
 config :phoenix, :json_library, Jason
 
 config :top_role, :pow,
-  user: TopRole.Users.User,
+  user: TopRole.User,
   repo: TopRole.Repo,
   web_module: TopRoleWeb
 
