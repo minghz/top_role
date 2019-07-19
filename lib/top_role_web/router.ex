@@ -34,7 +34,7 @@ defmodule TopRoleWeb.Router do
       pipe_through [:protected]
 
       get "/dashboard", DashboardController, :index
-      get "/game/:room", GameTableController, :show
+      resources "/game_room", GameRoomController
       live "/mouse", MouseLive
     end
   end

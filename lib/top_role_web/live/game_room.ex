@@ -1,4 +1,4 @@
-defmodule TopRoleWeb.GameTable do
+defmodule TopRoleWeb.GameRoom do
   use Phoenix.LiveView
   alias TopRoleWeb.GamePresence
   alias Phoenix.Socket.Broadcast
