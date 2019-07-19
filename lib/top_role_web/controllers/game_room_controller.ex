@@ -1,15 +1,13 @@
 defmodule TopRoleWeb.GameRoomController do
   use TopRoleWeb, :controller
-  import Phoenix.LiveView.Controller
 
-  def show(conn, %{"room" => room}) do
-    case Pow.Plug.current_user(conn) do
-      %TopRole.User{} = current_user ->
-        live_render(conn, TopRoleWeb.GameRoom, session: %{
-          room: room,
-          current_user: current_user,
-        })
-      {:error, _} -> conn
-    end
+  def index(conn, _params) do
+    game_rooms = TopRole.Repo.all (TopRole.GameRoom)
+    render(conn, "index.html", game_rooms: game_rooms)
+  end
+
+  def show(conn, %{"id" => id}) do
+    game_room = TopRole.Repo.get(TopRole.GameRoom, id)
+    render(conn, "show.html", game_room: game_room)
   end
 end

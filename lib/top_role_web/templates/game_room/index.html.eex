@@ -1,0 +1,15 @@
+<h1>Listing all Game Rooms</h1>
+<div class="row">
+  <div class="col-12">
+    <%= if length(@game_rooms) == 0 do %>
+      <p>Sorry, no game rooms exist</p>
+    <% end %>
+
+    <%= for game_room <- @game_rooms do %>
+      <div class="card">
+        <h5 class="card-title">Game Room</h5>
+        <p class="card-text"><%= game_room.description %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
