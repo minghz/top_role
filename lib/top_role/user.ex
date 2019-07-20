@@ -5,7 +5,7 @@ defmodule TopRole.User do
   schema "users" do
     pow_user_fields()
 
-    has_many :game_rooms, TopRole.GameRoom
+    has_many :game_rooms, TopRole.GameRoom, foreign_key: :owner_id, references: :id
 
     timestamps()
   end

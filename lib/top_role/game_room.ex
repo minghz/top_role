@@ -4,7 +4,7 @@ defmodule TopRole.GameRoom do
   alias TopRole.GameRoom
 
   schema "game_rooms" do
-    belongs_to :user, TopRole.User
+    belongs_to :owner, TopRole.User, foreign_key: :owner_id, references: :id
     field :description, :string
 
     timestamps()
@@ -13,7 +13,7 @@ defmodule TopRole.GameRoom do
   @doc false
   def changeset(%GameRoom{} = game_room, attrs) do
     game_room
-    |> cast(attrs, [:user_id, :description])
-    |> validate_required([:user_id])
+    |> cast(attrs, [:owner_id, :description])
+    |> validate_required([:owner_id])
   end
 end

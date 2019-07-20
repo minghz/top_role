@@ -4,13 +4,13 @@ defmodule TopRole.Repo.Migrations.CreateGameRoomsTable do
   def change do
 
     create table("game_rooms") do
-      add :user_id, references(:users)
+      add :owner_id, references(:users)
       add :description, :string
 
       timestamps()
     end
 
-    create index("game_rooms", [:user_id])
+    create index("game_rooms", [:owner_id])
 
   end
 end
