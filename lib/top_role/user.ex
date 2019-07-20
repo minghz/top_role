@@ -1,4 +1,4 @@
-defmodule TopRole.Users.User do
+defmodule TopRole.User do
   use Ecto.Schema
   use Pow.Ecto.Schema
 

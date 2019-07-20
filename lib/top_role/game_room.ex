@@ -4,7 +4,7 @@ defmodule TopRole.GameRoom do
   alias TopRole.GameRoom
 
   schema "game_rooms" do
-    belongs_to :user, TopRole.Users.User
+    belongs_to :user, TopRole.User
     field :description, :string
 
     timestamps()
