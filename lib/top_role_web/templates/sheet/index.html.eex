@@ -1,0 +1,26 @@
+<h1>Listing Character sheets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Player</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for sheet <- @character_sheets do %>
+    <tr>
+      <td><%= sheet.player_id %></td>
+
+      <td>
+        <%= link "Show", to: Routes.sheet_path(@conn, :show, sheet) %>
+        <%= link "Edit", to: Routes.sheet_path(@conn, :edit, sheet) %>
+        <%= link "Delete", to: Routes.sheet_path(@conn, :delete, sheet), method: :delete, data: [confirm: "Are you sure?"] %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Sheet", to: Routes.sheet_path(@conn, :new) %></span>
