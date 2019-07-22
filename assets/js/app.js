@@ -1,3 +1,5 @@
+require("bootstrap");
+
 import "phoenix_html"
 import LiveSocket from "phoenix_live_view"
 

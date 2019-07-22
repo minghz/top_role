@@ -22,6 +22,7 @@ defmodule TopRoleWeb do
       use Phoenix.Controller, namespace: TopRoleWeb
       import Plug.Conn
       import TopRoleWeb.Router.Helpers
+      alias TopRoleWeb.Router.Helpers, as: Routes
       import TopRoleWeb.Gettext
     end
   end
