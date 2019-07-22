@@ -16,6 +16,14 @@
       <div class="card-body">
         <h5 class="card-title">Owned Games</h5>
         <p class="card-text"></p>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#gameRoomForm" aria-expanded="false" aria-controls="gameRoomForm">
+          New Game
+        </button>
+        <div class="collapse" id="gameRoomForm">
+          <div class="card card-body">
+            Blabla
+          </div>
+        </div>
       </div>
     </div>
   </div>
