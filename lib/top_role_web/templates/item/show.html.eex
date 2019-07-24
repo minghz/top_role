@@ -1,0 +1,38 @@
+<h1>Show Item</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @item.name %>
+  </li>
+
+  <li>
+    <strong>Type:</strong>
+    <%= @item.type %>
+  </li>
+
+  <li>
+    <strong>Weight:</strong>
+    <%= @item.weight %>
+  </li>
+
+  <li>
+    <strong>Rarity:</strong>
+    <%= @item.rarity %>
+  </li>
+
+  <li>
+    <strong>Source:</strong>
+    <%= @item.source %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @item.description %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.item_path(@conn, :edit, @item) %></span>
+<span><%= link "Back", to: Routes.item_path(@conn, :index) %></span>

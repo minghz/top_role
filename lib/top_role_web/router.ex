@@ -30,6 +30,7 @@ defmodule TopRoleWeb.Router do
 
     get "/", HomeController, :index
     resources "/character_sheets", SheetController
+    resources "/items", ItemController
 
     scope "/" do
       pipe_through [:protected]
