@@ -6,6 +6,7 @@ defmodule TopRoleWeb.ItemController do
 
   def index(conn, _params) do
     items = Resources.list_items()
+    #items = FastGlobal.get(:weapons)
     render(conn, "index.html", items: items)
   end
 

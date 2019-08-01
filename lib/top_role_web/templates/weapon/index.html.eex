@@ -1,0 +1,80 @@
+<h1>Listing Weapons</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Dmg1</th>
+      <th>Dmg2</th>
+      <th>Dmg type</th>
+      <th>Description</th>
+      <th>Page</th>
+      <th>Property</th>
+      <th>Rarity</th>
+      <th>Source</th>
+      <th>Type</th>
+      <th>Weapon category</th>
+      <th>Weight</th>
+      <th>Attached spells</th>
+      <th>Curse</th>
+      <th>Range</th>
+      <th>Req attune</th>
+      <th>Sentient</th>
+      <th>Tier</th>
+      <th>Charges</th>
+      <th>Staff</th>
+      <th>Ability</th>
+      <th>Value</th>
+      <th>Wondrous</th>
+      <th>Age</th>
+      <th>Firearm</th>
+      <th>Reload</th>
+      <th>Axe</th>
+      <th>Sword</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for weapon <- @weapons do %>
+    <tr>
+      <td><%= weapon.name %></td>
+      <td><%= weapon.dmg1 %></td>
+      <td><%= weapon.dmg2 %></td>
+      <td><%= weapon.dmg_type %></td>
+      <td><%= weapon.description %></td>
+      <td><%= weapon.page %></td>
+      <td><%= weapon.property %></td>
+      <td><%= weapon.rarity %></td>
+      <td><%= weapon.source %></td>
+      <td><%= weapon.type %></td>
+      <td><%= weapon.weapon_category %></td>
+      <td><%= weapon.weight %></td>
+      <td><%= weapon.attached_spells %></td>
+      <td><%= weapon.curse %></td>
+      <td><%= weapon.range %></td>
+      <td><%= weapon.req_attune %></td>
+      <td><%= weapon.sentient %></td>
+      <td><%= weapon.tier %></td>
+      <td><%= weapon.charges %></td>
+      <td><%= weapon.staff %></td>
+      <td><%=# weapon.ability %></td>
+      <td><%= weapon.value %></td>
+      <td><%= weapon.wondrous %></td>
+      <td><%= weapon.age %></td>
+      <td><%= weapon.firearm %></td>
+      <td><%= weapon.reload %></td>
+      <td><%= weapon.axe %></td>
+      <td><%= weapon.sword %></td>
+
+      <td>
+        <%= link "Show", to: Routes.weapon_path(@conn, :show, weapon) %>
+        <%= link "Edit", to: Routes.weapon_path(@conn, :edit, weapon) %>
+        <%= link "Delete", to: Routes.weapon_path(@conn, :delete, weapon), method: :delete, data: [confirm: "Are you sure?"] %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Weapon", to: Routes.weapon_path(@conn, :new) %></span>

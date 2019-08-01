@@ -47,7 +47,8 @@ defmodule TopRole.Mixfile do
       {:plug, "~> 1.7"},
       {:jason, "~> 1.1"},
       {:pow, "~> 1.0.6"},
-      {:redix, ">= 0.0.0"}
+      {:redix, ">= 0.0.0"},
+      {:fastglobal, "~> 1.0"}
     ]
   end
 
