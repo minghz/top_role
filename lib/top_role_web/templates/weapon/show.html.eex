@@ -1,0 +1,148 @@
+<h1>Show Weapon</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @weapon.name %>
+  </li>
+
+  <li>
+    <strong>Dmg1:</strong>
+    <%= @weapon.dmg1 %>
+  </li>
+
+  <li>
+    <strong>Dmg2:</strong>
+    <%= @weapon.dmg2 %>
+  </li>
+
+  <li>
+    <strong>Dmg type:</strong>
+    <%= @weapon.dmg_type %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @weapon.description %>
+  </li>
+
+  <li>
+    <strong>Page:</strong>
+    <%= @weapon.page %>
+  </li>
+
+  <li>
+    <strong>Property:</strong>
+    <%= @weapon.property %>
+  </li>
+
+  <li>
+    <strong>Rarity:</strong>
+    <%= @weapon.rarity %>
+  </li>
+
+  <li>
+    <strong>Source:</strong>
+    <%= @weapon.source %>
+  </li>
+
+  <li>
+    <strong>Type:</strong>
+    <%= @weapon.type %>
+  </li>
+
+  <li>
+    <strong>Weapon category:</strong>
+    <%= @weapon.weapon_category %>
+  </li>
+
+  <li>
+    <strong>Weight:</strong>
+    <%= @weapon.weight %>
+  </li>
+
+  <li>
+    <strong>Attached spells:</strong>
+    <%= @weapon.attached_spells %>
+  </li>
+
+  <li>
+    <strong>Curse:</strong>
+    <%= @weapon.curse %>
+  </li>
+
+  <li>
+    <strong>Range:</strong>
+    <%= @weapon.range %>
+  </li>
+
+  <li>
+    <strong>Req attune:</strong>
+    <%= @weapon.req_attune %>
+  </li>
+
+  <li>
+    <strong>Sentient:</strong>
+    <%= @weapon.sentient %>
+  </li>
+
+  <li>
+    <strong>Tier:</strong>
+    <%= @weapon.tier %>
+  </li>
+
+  <li>
+    <strong>Charges:</strong>
+    <%= @weapon.charges %>
+  </li>
+
+  <li>
+    <strong>Staff:</strong>
+    <%= @weapon.staff %>
+  </li>
+
+  <li>
+    <strong>Ability:</strong>
+    <%= @weapon.ability %>
+  </li>
+
+  <li>
+    <strong>Value:</strong>
+    <%= @weapon.value %>
+  </li>
+
+  <li>
+    <strong>Wondrous:</strong>
+    <%= @weapon.wondrous %>
+  </li>
+
+  <li>
+    <strong>Age:</strong>
+    <%= @weapon.age %>
+  </li>
+
+  <li>
+    <strong>Firearm:</strong>
+    <%= @weapon.firearm %>
+  </li>
+
+  <li>
+    <strong>Reload:</strong>
+    <%= @weapon.reload %>
+  </li>
+
+  <li>
+    <strong>Axe:</strong>
+    <%= @weapon.axe %>
+  </li>
+
+  <li>
+    <strong>Sword:</strong>
+    <%= @weapon.sword %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.weapon_path(@conn, :edit, @weapon) %></span>
+<span><%= link "Back", to: Routes.weapon_path(@conn, :index) %></span>

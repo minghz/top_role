@@ -1,0 +1,5 @@
+<h1>Edit Weapon</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.weapon_path(@conn, :update, @weapon)) %>
+
+<span><%= link "Back", to: Routes.weapon_path(@conn, :index) %></span>
